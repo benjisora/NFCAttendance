@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "821219270682",
+    "firebase_url": "https://nfcattendance-c2c89.firebaseio.com",
+    "project_id": "nfcattendance-c2c89",
+    "storage_bucket": "nfcattendance-c2c89.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821219270682:android:52f5fe5c2b89b27a",
+        "android_client_info": {
+          "package_name": "com.projects.dreamteam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821219270682-64b22pfia4u5ilaav5d9enm3hcjvd51q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projects.dreamteam",
+            "certificate_hash": "24fb382d7bb0c535da7e2a30fbe01ae2a0116119"
+          }
+        },
+        {
+          "client_id": "821219270682-635o8b2m72sct24kneorvclttdd3405j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQMJ5jmzSeTSqSGnvLMTc-lneV8yCciRA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821219270682-635o8b2m72sct24kneorvclttdd3405j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
