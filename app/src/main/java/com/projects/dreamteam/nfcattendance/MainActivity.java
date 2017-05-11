@@ -11,10 +11,13 @@ import android.nfc.tech.NfcA;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends Activity {
 
@@ -35,6 +38,29 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.button)
+    public void buttonAddClick() {
+        Intent i = new Intent(MainActivity.this, AddUserActivity.class);
+        startActivity(i);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        if (intent.getAction().equals(NfcAdapter.ACTION_TAG_DISCOVERED)) {
+            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
+
+            ArrayList<String> values = new ArrayList<>();
+            String idcard = "";
+            for (int i = 0; i < 4; i++) {
+                values.add(Integer.toHexString(tag.getId()[i]).toUpperCase());
+                idcard += values.get(i).substring(values.get(i).length() - 2, values.get(i).length());
+            }
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            database.getReference("users").child(idcard).child("lastattendance").getRef().setValue(String.valueOf(System.currentTimeMillis()));
+        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -52,21 +78,5 @@ public class MainActivity extends Activity {
         super.onPause();
         NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         nfcAdapter.disableForegroundDispatch(this);
-    }
-
-    @Override
-    protected void onNewIntent(Intent intent) {
-        if (intent.getAction().equals(NfcAdapter.ACTION_TAG_DISCOVERED)) {
-            Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
-
-            ArrayList<String> values = new ArrayList<>();
-            String text = "";
-            for (int i = 0; i < 4; i++) {
-                values.add(Integer.toHexString(tag.getId()[i]).toUpperCase());
-                text += " #" + (i + 1) + "=" + values.get(i).substring(values.get(i).length() - 2, values.get(i).length());
-            }
-
-            txtNFCID.setText(text.toUpperCase());
-        }
     }
 }
