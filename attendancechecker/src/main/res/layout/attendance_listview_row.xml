@@ -6,20 +6,24 @@
 
     <ImageView
         android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_height="64dp"
         android:layout_weight="25"
-        android:id="@+id/attendance_listview_row_face"/>
+        android:id="@+id/attendance_listview_row_face"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/defaut_image"/>
 
     <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="50"
+        android:layout_gravity="center_vertical"
         android:id="@+id/attendance_listview_row_name"/>
 
-    <ImageView
+    <TextView
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="25"
-        android:id="@+id/attendance_listview_row_check"/>
+        android:layout_gravity="center_vertical"
+        android:id="@+id/attendance_listview_row_last"/>
 
 </LinearLayout>
